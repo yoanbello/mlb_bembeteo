@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-2d(nvtn$q9@u%2v+-96fkhheq(jiq6(_&+1k9$anw7v00b%4z3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'nba-bembeteo.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mlb-bembeteo.onrender.com']
 
 
 # Application definition
