@@ -1,0 +1,53 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+
+
+<h1 class="title is-3 has-text-centered" style="display: flex; align-items: center; justify-content: center;">
+    {{ serie.instancia.nombre }}
+    <img src="{{ serie.equipo_a.logo_equipo }}" alt="{{ serie.equipo_a.nombre }}" style="width: 40px; height: 40px; margin: 0 10px;" />
+    vs
+    <img src="{{ serie.equipo_b.logo_equipo }}" alt="{{ serie.equipo_b.nombre }}" style="width: 40px; height: 40px; margin: 0 10px;" />
+</h1>
+
+<div class="box">
+    <!-- Mostrar mensajes -->
+    {% if messages %}
+        <div class="notification">
+            <ul>
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="field">                
+            <div class="control">
+                <label class="label">{{ form.juegos_equipo_a.label }}</label>
+                {{ form.juegos_equipo_a }}               
+            </div>
+        </div>
+        <div class="field">                
+            <div class="control">
+                <label class="label">{{ form.juegos_equipo_b.label }}</label>
+                {{ form.juegos_equipo_b }}                
+            </div>
+        </div>      
+
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-link">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+
+
+
+

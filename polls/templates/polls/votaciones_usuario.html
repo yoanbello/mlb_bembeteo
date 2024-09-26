@@ -1,0 +1,25 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+    <h1 class="title is-3">Votaciones de {{ usuario.username }}</h1>
+    {% for ronda, votos in votos_por_ronda.items %}
+        <h2 class="title is-5">{{ ronda }}</h2>
+        <ul class="mb-3">
+            {% for voto in votos %}
+            <div class="box">
+                <div class="columns is-vcentered is-mobile">
+                    <div class="column is-narrow">
+                        <img src="{{ voto.serie.equipo_a.logo_equipo }}" style="width: 50px; height: 50px;" alt="{{ serie.equipo_a.nombre }}"/> 
+                    </div>
+                    <div class="column has-text-centered">
+                        <span class="is-size-5">{{ voto.juegos_equipo_a }}-{{ voto.juegos_equipo_b }}</span>
+                    </div>
+                    <div class="column is-narrow">
+                        <img src="{{ voto.serie.equipo_b.logo_equipo }}" style="width: 50px; height: 50px;" alt="{{ serie.equipo_b.nombre }}"/>
+                    </div>
+                </div>                
+            </div>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "polls/base.html" %}
+    
+{% block content%}
+<h1 class="title is-3">Registrarse</h1>
+    
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+    <div class="box">
+      <form id="login-form" method="post" action="{% url 'registro' %}">
+        {% csrf_token %}
+        <div class="field">
+            <p class="control">
+            <label class="label">Usuario</label>
+              <input class="input" id="username" name="username"  placeholder="Name">
+            </p>
+          </div>
+          <div class="field">
+            <p class="control">
+            <label class="label">Contraseña</label>
+              <input class="input" type="password" placeholder="Contraseña" id="password1" name="password1">
+            </p>
+          </div>
+          <div class="field">
+            <p class="control">
+            <label class="label">Contraseña</label>
+              <input class="input" type="password" placeholder="Confirmar Contraseña" id="password2" name="password2">
+            </p>
+          </div>
+          <div class="field">
+            <label class="label">Equipo Campeon</label>
+            <div class="control">
+              <div class="select">
+                <select name="equipo_campeon" id="select-equipos">
+               
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <p class="control">
+              <button type="submit" class="button is-link">
+                Registrarse
+              </button>
+            </p>
+          </div>
+    </form>
+    </div>
+
+    <script>
+      // Function to load equipos into the select element
+      function loadEquipos() {
+        var select = document.getElementById('select-equipos');
+        
+        // Clear previous options
+        select.innerHTML = '';
+
+        // Fetch equipos and populate the select element
+        fetch('{% url "equipos_list" %}')
+          .then(response => response.json())
+          .then(data => {
+            data.forEach(equipo => {
+              var option = document.createElement('option');
+              option.value = equipo.id;
+              option.textContent = equipo.nombre;
+              select.appendChild(option);
+            });
+          })
+          .catch(error => {
+            console.error('Error fetching equipos:', error);
+          });
+      }
+
+      // Call the loadEquipos function when the page loads
+      window.addEventListener('DOMContentLoaded', loadEquipos);
+    </script>
+
+    {% endblock %}
+
+    

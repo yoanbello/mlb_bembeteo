@@ -1,0 +1,73 @@
+/* Estilos generales */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Estilos del encabezado */
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.logo {
+    margin: 0;
+}
+
+.nav {
+    float: right;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+/* Estilos del contenido principal */
+
+.main-content {
+    padding: 20px 0;
+}
+
+.heading {
+    color: #333;
+}
+
+.leaderboard {
+    list-style: none;
+    padding: 0;
+}
+
+.leaderboard-item {
+    margin-bottom: 10px;
+}
+
+/* Estilos del formulario de cierre de sesión */
+
+.logout-form {
+    display: inline;
+}
+
+.logout-btn {
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #ddd;
+}

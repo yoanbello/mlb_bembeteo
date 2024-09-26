@@ -1,0 +1,38 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+    <h1 class="title is-3 has-text-centered">Tabla de Clasificación</h1>
+
+    <div class="table-container">
+        <table class="table is-striped is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th class="has-text-left">Lugar</th>
+                    <th class="has-text-left">Nombre</th>
+                    <th class="has-text-left">Puntos</th>
+                    <th class="has-text-left">Campeón</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for perfil in perfiles %}
+                    <tr>
+                        <td class="has-text-left">{{ forloop.counter }}</td>
+                        <td class="has-text-left">
+                            <a href="{% url 'votaciones_usuario' user_id=perfil.user.id %}" class="mlb-button"> 
+                                {{ perfil.user.username }}
+                            </a>
+                        </td>
+                        <td class="has-text-left">{{ perfil.puntos }}</td>
+                        <td class="has-text-left">
+                            {% if perfil.equipo_campeon %}
+                                <img src="{{ perfil.equipo_campeon.logo_equipo }}" alt="{{ perfil.equipo_campeon.nombre }}" style="width: 40px; height: 40px;"/>
+                            {% else %}
+                                No disponible
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

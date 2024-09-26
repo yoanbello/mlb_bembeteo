@@ -1,0 +1,38 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+    <h1 class="title is-3 has-text-centered">Series de Playoff</h1>
+    <ul class="content">
+        {% for serie in series_abiertas %}
+            
+                <div class="box">
+                    <div class="columns is-vcentered is-mobile">
+                        <div class="column is-narrow">
+                            <img src="{{ serie.equipo_a.logo_equipo }}" style="width: 50px; height: 50px;" alt="{{ serie.equipo_a.nombre }}"/> 
+                        </div>
+                        <div class="column has-text-centered">
+                            <span class="is-size-5">vs</span>
+                        </div>
+                        <div class="column is-narrow">
+                            <img src="{{ serie.equipo_b.logo_equipo }}" style="width: 50px; height: 50px;" alt="{{ serie.equipo_b.nombre }}"/>
+                        </div>
+                    </div>
+                    <div class="has-text-centered is-hidden-desktop">
+                        {% if serie.abierta %}
+                            <a href="{% url 'votar_serie' serie.id %}" class="button is-link is-fullwidth">Votar</a>
+                        {% else %}
+                            <span class="tag is-danger is-fullwidth">Cerrada</span>
+                        {% endif %}
+                    </div>
+                    <div class="has-text-centered is-hidden-mobile">
+                        {% if serie.abierta %}
+                            <a href="{% url 'votar_serie' serie.id %}" class="button is-link is-fullwidth">Votar</a>
+                        {% else %}
+                            <span class="tag is-danger is-fullwidth">Cerrada</span>
+                        {% endif %}
+                    </div>
+                </div>
+            
+        {% endfor %}
+    </ul>
+{% endblock %}
