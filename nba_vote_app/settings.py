@@ -84,15 +84,22 @@ WSGI_APPLICATION = 'nba_vote_app.wsgi.application'
 
 
 # Replace the DATABASES section of your settings.py with this
+# Add these at the top of your settings.py
+
+
+# Replace the DATABASES section of your settings.py with this
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mlb_bembeteo',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',  # o la dirección IP del servidor de la base de datos
-        'PORT': '5432',       # puerto por defecto de PostgreSQL
-    }
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': getenv('PGDATABASE'),
+    'USER': getenv('PGUSER'),
+    'PASSWORD': getenv('PGPASSWORD'),
+    'HOST': getenv('PGHOST'),
+    'PORT': getenv('PGPORT', 5432),
+    'OPTIONS': {
+      'sslmode': 'require',
+    },
+  }
 }
 
 
