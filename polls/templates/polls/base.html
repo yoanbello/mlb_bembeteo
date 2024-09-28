@@ -1,16 +1,20 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
 <head>
+    <link rel="shortcut icon" href="{% static 'polls/favicon.ico' %}" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <title>{% block title %}MLB Vote App{% endblock %}</title>
+    
 </head>
 <body>
 
 {% block header %}
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
+        <div class="navbar-brand">         
           <span class="navbar-item" style="font-weight: bold; font-size: 1.2rem;">
             BembeteoMLB
         </span>
@@ -27,13 +31,13 @@
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item" href="{% url 'home' %}">
-              Inicio
+              Clasificación
             </a>
             <a class="navbar-item" href="{% url 'series_abiertas' %}">
-              Encuestas
+              Votar
             </a>
             <a class="navbar-item" href="{% url 'info' %}">
-              Info
+              Sistema de Puntuación
             </a>
           </div>
           <div class="navbar-end">
