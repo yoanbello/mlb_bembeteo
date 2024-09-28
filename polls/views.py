@@ -70,7 +70,7 @@ def home(request):
 def series_abiertas(request):
     try:
         # Obtener todas las series abiertas
-        series_abiertas = Serie.objects.all()        
+        series_abiertas = Serie.objects.all().order_by('-abierta')       
         return render(request, 'polls/series_abiertas.html', {'series_abiertas': series_abiertas})
     except PermissionDenied:
         # Redirigir al usuario a la página de inicio de sesión si no tiene permiso
